@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root to: 'products#index'
+  #get '/' => 'products#index' -> verbose method
+  #get '/' => { controller: 'products', action: 'index' } -> older
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
