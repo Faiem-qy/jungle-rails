@@ -8,9 +8,8 @@
     <p><%= product.description %></p>
   </td>
   <td>
-    $<%= product.price %>
+    <%= humanized_money_with_symbol product.price %>
   </td>
-  # added symbol for price
   <td>
     <div>
     <%= button_to remove_item_cart_path(product_id: product.id), class: 'btn btn-xs btn-danger' do %> - <% end %>
@@ -19,7 +18,6 @@
     </div>
   </td>
   <td>
-    $<%= product.price * quantity %>
+    <%= humanized_money_with_symbol product.price * quantity %>
   </td>
-  #added symbol for price
 </tr>
