@@ -5,6 +5,12 @@
   </header>
 
   <div class="panel panel-default items">
+  <% if enhanced_cart.empty? %>
+    <div class="alert alert-info">
+      <p>Your shopping cart is currently empty.</p>
+      <p><%= link_to "Explore Our Products", root_path, class: "btn btn-success" %></p>
+    </div>
+  <% else %>  
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -46,7 +52,8 @@
           data-currency="cad">
         </script>
       <% end %>
-    </div>
-  </div>
+     </div>
+    <% end %>
+   </div>
 
 </section>
