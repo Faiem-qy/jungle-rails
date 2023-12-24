@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def index
+    @categories = Category.all
+  end
+  
   def cart
     @cart ||= cookies[:cart].present? ? JSON.parse(cookies[:cart]) : {}
   end

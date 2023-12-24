@@ -1,0 +1,20 @@
+<h1>Admin Categories</h1>
+
+<table class="table table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <!-- Add more table headers as needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.id %></td>
+        <td><%= category.name %></td>
+        <!-- Add more table cells for other category attributes -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
