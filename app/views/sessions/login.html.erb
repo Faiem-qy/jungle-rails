@@ -1,4 +1,9 @@
 <h1>Login</h1>
+<% css_class = (notice == 'Login successful!' || notice == 'Logout successful!') ? 'alert alert-success' : 'alert alert-danger' %>
+
+<% if notice.present? %>
+  <%= content_tag :div, notice, class: css_class %>
+<% end %>
 
 <%= form_for :session, url: login_path do |f| %>
   

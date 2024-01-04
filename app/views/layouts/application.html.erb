@@ -13,7 +13,12 @@
 
   <%= render 'layouts/top_nav' %>
 
+  
   <main class="container">
+  <% css_class = (notice == 'Registration successful! Welcome to the Jungle.') ? 'alert alert-success' : 'alert alert-danger' %>
+  <% if notice.present? && (notice == 'Registration successful! Welcome to the Jungle.') %>
+    <%= content_tag :div, notice, class: css_class %>
+  <% end %>
     <%= yield %>
   </main>
 
