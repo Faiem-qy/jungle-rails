@@ -20,7 +20,8 @@ gem 'jbuilder', '~> 2.7'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', group: :doc
+gem 'sdoc', '~> 1.0', group: :doc
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -55,7 +56,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
-gem 'rspec-rails'
+  gem 'rspec-rails', '~> 5.1'
+  gem 'net-smtp', require: false
 end
 
 group :development do
