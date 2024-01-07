@@ -37,5 +37,16 @@ describe 'Validations' do
 
      expect(user).to be_valid
   end
+
+  it 'requires a minimum password lenth of 8 characters' do
+    user = User.new(
+      email: 'test@example.com',
+      password: 'short',
+      password_confirmation: 'short'    
+      )
+      expect(user).to_not be_valid
+      expect(user.errors.full_messages).to include("Password is too short (minimum is 8 characters)")
+  end
 end
 end
+
