@@ -47,6 +47,51 @@ describe 'Validations' do
       expect(user).to_not be_valid
       expect(user.errors.full_messages).to include("Password is too short (minimum is 8 characters)")
   end
-end
-end
 
+  describe '.authenticate_with_credentials' do
+    it 'returns a user if authenticated' do
+      user = User.create(
+        email: 'test@example.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+
+      authenticated_user = User.authenticate_with_credentials('test@example.com', 'password')
+      expect(authenticated_user).to eq(user)
+    end
+
+    it 'returns nil if not authenticated' do
+      user = User.create(
+        email: 'test@example.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+
+      authenticated_user = User.authenticate_with_credentials('test@example.com', 'wrongpassword')
+      expect(authenticated_user).to be_nil
+    end
+
+    it 'ignores leading/trailing spaces in email' do
+      user = User.create(
+        email: 'test@example.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+
+      authenticated_user = User.authenticate_with_credentials('   test@example.com   ', 'password')
+      expect(authenticated_user).to eq(user)
+    end
+
+    it 'ignores case in email' do
+      user = User.create(
+        email: 'test@example.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+
+      authenticated_user = User.authenticate_with_credentials('TEST@EXAMPLE.COM', 'password')
+      expect(authenticated_user).to eq(user)
+    end
+  end
+end
+end
