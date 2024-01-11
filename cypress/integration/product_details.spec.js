@@ -1,5 +1,13 @@
 
-it('should display a list of products', () => {
-  cy.visit('http://localhost:3000/');
-  cy.get('.products article').should("have.length.gt", 10);
-});
+describe('Product Detail Page', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/');
+  });
+
+  it('should display a list of products', () => {
+    cy.get('article').first().click();
+    cy.get('.product-detail').should('exist');
+    cy.url().should('include', '/products/');
+  });
+})
+
